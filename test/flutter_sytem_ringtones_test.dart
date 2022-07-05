@@ -1,7 +1,7 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_sytem_ringtones/flutter_sytem_ringtones.dart';
-import 'package:flutter_sytem_ringtones/flutter_sytem_ringtones_platform_interface.dart';
 import 'package:flutter_sytem_ringtones/flutter_sytem_ringtones_method_channel.dart';
+import 'package:flutter_sytem_ringtones/flutter_sytem_ringtones_platform_interface.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockFlutterSytemRingtonesPlatform 
