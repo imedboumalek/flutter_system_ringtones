@@ -1,10 +1,8 @@
 package com.pavlok.flutter_system_ringtones
 
 import android.content.Context
-import android.media.Ringtone
 import android.media.RingtoneManager
 import androidx.annotation.NonNull
-
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -20,7 +18,7 @@ class FlutterSystemRingtonesPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
 
     private lateinit var ringtoneManager: RingtoneManager
-     private var ringtones = arrayListOf<Ringtone>()
+     private var ringtones = arrayListOf<HashMap<String, Any>>()
 
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -30,8 +28,9 @@ class FlutterSystemRingtonesPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-        if (call.method == "getPlatformVersion") {
-            result.success("Android ${android.os.Build.VERSION.RELEASE}")
+        if (call.method == "getRingtones") {
+
+
         } else {
             result.notImplemented()
         }
@@ -44,14 +43,27 @@ class FlutterSystemRingtonesPlugin : FlutterPlugin, MethodCallHandler {
 
    private fun loadRingtones(context: Context) {
         ringtoneManager = RingtoneManager(context)
-        if (!ringtoneManager.cursor.isFirst) ringtoneManager.cursor.moveToFirst()
-        do {
-            val temp = ringtoneManager.getRingtone(ringtoneManager.cursor.position)
-            ringtones.add(temp)
+       ringtoneManager.setType(RingtoneManager.TYPE_RINGTONE);
+       val cursor= ringtoneManager.cursor
 
-            println(temp.getTitle(context))
-        } while (ringtoneManager.cursor.moveToNext())
-        ringtoneManager.cursor.close()
+        if (!cursor.isFirst) cursor.moveToFirst()
+        do {
+            val llll= ringtoneManager.getRingtone(cursor.position)
+            val notificationTitle = cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX)
+            val notificationId =cursor.getString(RingtoneManager.ID_COLUMN_INDEX)
+            val notificationUri = cursor.getString(RingtoneManager.URI_COLUMN_INDEX) + "/" + notificationId
+val temp= hashMapOf<String,Any>(
+                    "id" to notificationId,
+                    "title" to notificationTitle,
+                    "uri" to notificationUri
+               )
+            ringtones.add(
+                temp
+            )
+
+            println(temp)
+        } while (cursor.moveToNext())
+        cursor.close()
     }
 
 

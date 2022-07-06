@@ -8,6 +8,7 @@
 import 'package:flutter_system_ringtones/src/ringtone.dart';
 
 import 'src/flutter_system_ringtones_platform_interface.dart';
+export 'src/ringtone.dart';
 
 class FlutterSystemRingtones {
   Future<List<Ringtone>?> getRingtones() {
