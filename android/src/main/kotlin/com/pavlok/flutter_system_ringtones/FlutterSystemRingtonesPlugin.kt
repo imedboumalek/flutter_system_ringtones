@@ -1,7 +1,9 @@
 package com.pavlok.flutter_system_ringtones
 
 import android.content.Context
+import android.media.Ringtone
 import android.media.RingtoneManager
+import android.net.Uri
 import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
@@ -29,8 +31,7 @@ class FlutterSystemRingtonesPlugin : FlutterPlugin, MethodCallHandler {
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         if (call.method == "getRingtones") {
-
-
+            result.success(ringtones);
         } else {
             result.notImplemented()
         }
@@ -42,27 +43,25 @@ class FlutterSystemRingtonesPlugin : FlutterPlugin, MethodCallHandler {
     }
 
    private fun loadRingtones(context: Context) {
-        ringtoneManager = RingtoneManager(context)
+       ringtoneManager = RingtoneManager(context)
        ringtoneManager.setType(RingtoneManager.TYPE_RINGTONE);
-       val cursor= ringtoneManager.cursor
+       val cursor = ringtoneManager.cursor
+       if (!cursor.isFirst) cursor.moveToFirst()
+       do {
 
-        if (!cursor.isFirst) cursor.moveToFirst()
-        do {
-            val llll= ringtoneManager.getRingtone(cursor.position)
-            val notificationTitle = cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX)
-            val notificationId =cursor.getString(RingtoneManager.ID_COLUMN_INDEX)
-            val notificationUri = cursor.getString(RingtoneManager.URI_COLUMN_INDEX) + "/" + notificationId
-val temp= hashMapOf<String,Any>(
-                    "id" to notificationId,
-                    "title" to notificationTitle,
-                    "uri" to notificationUri
-               )
-            ringtones.add(
-                temp
-            )
+           val notificationTitle = cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX)
+           val notificationId = cursor.getString(RingtoneManager.ID_COLUMN_INDEX)
+           val notificationUri =
+               cursor.getString(RingtoneManager.URI_COLUMN_INDEX) + "/" + notificationId
+           val temp = hashMapOf<String, Any>(
+               "id" to notificationId,
+               "title" to notificationTitle,
+               "uri" to notificationUri,
+           )
+           ringtones.add(temp)
+           println(temp)
 
-            println(temp)
-        } while (cursor.moveToNext())
+       } while (cursor.moveToNext())
         cursor.close()
     }
 

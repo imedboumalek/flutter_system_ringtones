@@ -12,7 +12,8 @@ class MethodChannelFlutterSystemRingtones extends FlutterSystemRingtonesPlatform
 
   @override
   Future<List<Ringtone>?> getRingtones() async {
-    final version = await methodChannel.invokeMethod<List<Map<String, dynamic>>>('getRingtones');
-    return version?.map((map) => Ringtone.fromMap(map)).toList();
+    var ringtones = await methodChannel.invokeMethod<List>('getRingtones');
+    ringtones = ringtones?.map((ringtone) => Map<String, dynamic>.from(ringtone)).toList();
+    return ringtones?.map((map) => Ringtone.fromMap(map)).toList();
   }
 }
