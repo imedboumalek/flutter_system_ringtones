@@ -22,11 +22,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    getRingtones();
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
+  Future<void> getRingtones() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
@@ -38,9 +38,6 @@ class _MyAppState extends State<MyApp> {
       print('Failed to get platform version.');
     }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
   }
 
@@ -52,7 +49,18 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: ${ringtones.length}\n'),
+          child: ListView.builder(
+            itemCount: ringtones.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                title: Text(ringtones[index].title),
+                subtitle: Text(ringtones[index].uri),
+                onTap: () {
+                  // _flutterSystemRingtonesPlugin.playRingtone(ringtones[index]);
+                },
+              );
+            },
+          ),
         ),
       ),
     );
