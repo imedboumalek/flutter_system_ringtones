@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-import 'flutter_sytem_ringtones_platform_interface.dart';
+import 'flutter_system_ringtones_platform_interface.dart';
 
-/// An implementation of [FlutterSytemRingtonesPlatform] that uses method channels.
-class MethodChannelFlutterSytemRingtones extends FlutterSytemRingtonesPlatform {
+/// An implementation of [FlutterSystemRingtonesPlatform] that uses method channels.
+class MethodChannelFlutterSystemRingtones extends FlutterSystemRingtonesPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('flutter_sytem_ringtones');
+  final methodChannel = const MethodChannel('flutter_system_ringtones');
 
   @override
   Future<String?> getPlatformVersion() async {

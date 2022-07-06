@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_system_ringtones/flutter_system_ringtones_method_channel.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_system_ringtones/flutter_system_ringtones_method_channel.dart';
 
 void main() {
   MethodChannelFlutterSystemRingtones platform = MethodChannelFlutterSystemRingtones();

@@ -1,4 +1,4 @@
-group 'com.pavlok.flutter_sytem_ringtones'
+group 'com.pavlok.flutter_system_ringtones'
 version '1.0-SNAPSHOT'
 
 buildscript {

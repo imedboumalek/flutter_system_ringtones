@@ -1,4 +1,4 @@
-# flutter_sytem_ringtones
+# flutter_system_ringtones
 
 An Android & iOS plugin to retrieve a list of system ringtones using native API's
 
@@ -12,4 +12,3 @@ Android and/or iOS.
 For help getting started with Flutter development, view the
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-

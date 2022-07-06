@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sytem_ringtones/flutter_sytem_ringtones.dart';
+import 'package:flutter_system_ringtones/flutter_system_ringtones.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
-  final _flutterSytemRingtonesPlugin = FlutterSytemRingtones();
+  final _flutterSystemRingtonesPlugin = FlutterSystemRingtones();
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
     // We also handle the message potentially returning null.
     try {
       platformVersion =
-          await _flutterSytemRingtonesPlugin.getPlatformVersion() ?? 'Unknown platform version';
+          await _flutterSystemRingtonesPlugin.getPlatformVersion() ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }

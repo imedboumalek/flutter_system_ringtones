@@ -1,13 +1,13 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint flutter_sytem_ringtones.podspec` to validate before publishing.
+# Run `pod lib lint flutter_system_ringtones.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'flutter_sytem_ringtones'
+  s.name             = 'flutter_system_ringtones'
   s.version          = '0.0.1'
-  s.summary          = 'An Android & iOS plugin to retrieve a list of system ringtones using native API's'
+  s.summary          = 'A new Flutter plugin project.'
   s.description      = <<-DESC
-An Android & iOS plugin to retrieve a list of system ringtones using native API's
+A new Flutter plugin project.
                        DESC
   s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }

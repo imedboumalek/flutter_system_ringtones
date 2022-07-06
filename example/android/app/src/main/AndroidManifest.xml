@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pavlok.flutter_sytem_ringtones_example">
-   <application
-        android:label="flutter_sytem_ringtones_example"
+    package="com.pavlok.flutter_system_ringtones_example">
+    <application
+        android:label="flutter_system_ringtones_example"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

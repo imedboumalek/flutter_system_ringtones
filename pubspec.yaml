@@ -1,4 +1,4 @@
-name: flutter_sytem_ringtones
+name: flutter_system_ringtones
 description: An Android & iOS plugin to retrieve a list of system ringtones using native API's
 version: 0.0.1
 homepage:
@@ -35,10 +35,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.pavlok.flutter_sytem_ringtones
-        pluginClass: FlutterSytemRingtonesPlugin
+        package: com.pavlok.flutter_system_ringtones
+        pluginClass: FlutterSystemRingtonesPlugin
       ios:
-        pluginClass: FlutterSytemRingtonesPlugin
+        pluginClass: FlutterSystemRingtonesPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

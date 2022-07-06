@@ -1,6 +1,6 @@
-# flutter_sytem_ringtones_example
+# flutter_system_ringtones_example
 
-Demonstrates how to use the flutter_sytem_ringtones plugin.
+Demonstrates how to use the flutter_system_ringtones plugin.
 
 ## Getting Started
 

@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class SwiftFlutterSytemRingtonesPlugin: NSObject, FlutterPlugin {
+public class SwiftFlutterSystemRingtonesPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "flutter_sytem_ringtones", binaryMessenger: registrar.messenger())
-    let instance = SwiftFlutterSytemRingtonesPlugin()
+    let channel = FlutterMethodChannel(name: "flutter_system_ringtones", binaryMessenger: registrar.messenger())
+    let instance = SwiftFlutterSystemRingtonesPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 

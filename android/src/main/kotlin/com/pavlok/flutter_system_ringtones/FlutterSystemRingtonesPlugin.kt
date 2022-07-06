@@ -1,13 +1,15 @@
-package com.pavlok.flutter_sytem_ringtones
+package com.pavlok.flutter_system_ringtones
 
 import androidx.annotation.NonNull
+
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
+import io.flutter.plugin.common.MethodChannel.Result
 
-/** FlutterSytemRingtonesPlugin */
-class FlutterSytemRingtonesPlugin: FlutterPlugin, MethodCallHandler {
+/** FlutterSystemRingtonesPlugin */
+class FlutterSystemRingtonesPlugin: FlutterPlugin, MethodCallHandler {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -15,7 +17,7 @@ class FlutterSytemRingtonesPlugin: FlutterPlugin, MethodCallHandler {
   private lateinit var channel : MethodChannel
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_sytem_ringtones")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_system_ringtones")
     channel.setMethodCallHandler(this)
   }
 
