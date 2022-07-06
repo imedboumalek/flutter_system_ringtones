@@ -5,10 +5,12 @@
 // platforms in the `pubspec.yaml` at
 // https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
 
-import 'flutter_system_ringtones_platform_interface.dart';
+import 'package:flutter_system_ringtones/src/ringtone.dart';
+
+import 'src/flutter_system_ringtones_platform_interface.dart';
 
 class FlutterSystemRingtones {
-  Future<String?> getPlatformVersion() {
-    return FlutterSystemRingtonesPlatform.instance.getPlatformVersion();
+  Future<List<Ringtone>?> getRingtones() {
+    return FlutterSystemRingtonesPlatform.instance.getRingtones();
   }
 }

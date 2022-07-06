@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_system_ringtones/src/ringtone.dart';
 
 import 'flutter_system_ringtones_platform_interface.dart';
 
@@ -10,8 +11,8 @@ class MethodChannelFlutterSystemRingtones extends FlutterSystemRingtonesPlatform
   final methodChannel = const MethodChannel('flutter_system_ringtones');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  Future<List<Ringtone>?> getRingtones() async {
+    final version = await methodChannel.invokeMethod<List<Map<String, dynamic>>>('getRingtones');
+    return version?.map((map) => Ringtone.fromMap(map)).toList();
   }
 }
