@@ -59,8 +59,6 @@ class FlutterSystemRingtonesPlugin : FlutterPlugin, MethodCallHandler {
                "uri" to notificationUri,
            )
            ringtones.add(temp)
-           println(temp)
-
        } while (cursor.moveToNext())
         cursor.close()
     }
