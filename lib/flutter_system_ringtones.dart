@@ -14,4 +14,12 @@ class FlutterSystemRingtones {
   Future<List<Ringtone>?> getRingtones() {
     return FlutterSystemRingtonesPlatform.instance.getRingtones();
   }
+
+  Future<List<Ringtone>?> getAlarms() {
+    return FlutterSystemRingtonesPlatform.instance.getAlarms();
+  }
+
+  Future<List<Ringtone>?> getNotifications() {
+    return FlutterSystemRingtonesPlatform.instance.getNotifications();
+  }
 }

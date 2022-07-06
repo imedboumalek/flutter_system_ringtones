@@ -27,4 +27,12 @@ abstract class FlutterSystemRingtonesPlatform extends PlatformInterface {
   Future<List<Ringtone>?> getRingtones() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future<List<Ringtone>?> getAlarms() {
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<List<Ringtone>?> getNotifications() {
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
 }
