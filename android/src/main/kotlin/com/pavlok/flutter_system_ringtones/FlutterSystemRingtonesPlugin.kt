@@ -20,7 +20,7 @@ class FlutterSystemRingtonesPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
 
     private lateinit var ringtoneManager: RingtoneManager
-    val ringtones = arrayListOf<Ringtone>()
+     private var ringtones = arrayListOf<Ringtone>()
 
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -42,19 +42,20 @@ class FlutterSystemRingtonesPlugin : FlutterPlugin, MethodCallHandler {
         channel.setMethodCallHandler(null)
     }
 
-    fun loadRingtones(context: Context): Unit {
+   private fun loadRingtones(context: Context) {
         ringtoneManager = RingtoneManager(context)
         if (!ringtoneManager.cursor.isFirst) ringtoneManager.cursor.moveToFirst()
         do {
             val temp = ringtoneManager.getRingtone(ringtoneManager.cursor.position)
             ringtones.add(temp)
-            println(temp)
+
+            println(temp.getTitle(context))
         } while (ringtoneManager.cursor.moveToNext())
-        ringtoneManager.cursor.close();
+        ringtoneManager.cursor.close()
     }
 
 
-    fun emptyRingtones(): Unit {
-        ringtones.clear();
+   private fun emptyRingtones() {
+        ringtones.clear()
     }
 }
