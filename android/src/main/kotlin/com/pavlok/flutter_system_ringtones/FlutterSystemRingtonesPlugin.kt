@@ -1,6 +1,8 @@
 package com.pavlok.flutter_system_ringtones
 
 import android.content.Context
+import android.database.CrossProcessCursor
+import android.database.Cursor
 import android.media.Ringtone
 import android.media.RingtoneManager
 import android.net.Uri
@@ -19,52 +21,88 @@ class FlutterSystemRingtonesPlugin : FlutterPlugin, MethodCallHandler {
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
 
-    private lateinit var ringtoneManager: RingtoneManager
      private var ringtones = arrayListOf<HashMap<String, Any>>()
+    private var alarms = arrayListOf<HashMap<String, Any>>()
+    private var notifications = arrayListOf<HashMap<String, Any>>()
+
+
 
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        loadRingtones(flutterPluginBinding.applicationContext)
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_system_ringtones")
         channel.setMethodCallHandler(this)
+        loadRingtones(flutterPluginBinding.applicationContext)
+        loadAlarms(flutterPluginBinding.applicationContext)
+        loadNotifications(flutterPluginBinding.applicationContext)
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         if (call.method == "getRingtones") {
             result.success(ringtones);
-        } else {
-            result.notImplemented()
+            return
         }
+        if (call.method == "getNotifications") {
+            result.success(notifications);
+            return
+        }
+        if (call.method == "getAlarms") {
+            result.success(alarms);
+            return
+        }
+            result.notImplemented()
+
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-        emptyRingtones()
+        clear()
         channel.setMethodCallHandler(null)
     }
 
    private fun loadRingtones(context: Context) {
-       ringtoneManager = RingtoneManager(context)
+      val ringtoneManager = RingtoneManager(context)
        ringtoneManager.setType(RingtoneManager.TYPE_RINGTONE);
        val cursor = ringtoneManager.cursor
-       if (!cursor.isFirst) cursor.moveToFirst()
-       do {
+       load(cursor, ringtones)
 
-           val notificationTitle = cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX)
-           val notificationId = cursor.getString(RingtoneManager.ID_COLUMN_INDEX)
-           val notificationUri =
-               cursor.getString(RingtoneManager.URI_COLUMN_INDEX) + "/" + notificationId
-           val temp = hashMapOf<String, Any>(
-               "id" to notificationId,
-               "title" to notificationTitle,
-               "uri" to notificationUri,
-           )
-           ringtones.add(temp)
-       } while (cursor.moveToNext())
+    }
+    private fun loadAlarms(context: Context) {
+        val ringtoneManager = RingtoneManager(context)
+        ringtoneManager.setType(RingtoneManager.TYPE_ALARM);
+        val cursor = ringtoneManager.cursor
+        load(cursor, alarms)
+    }
+    private fun loadNotifications(context: Context) {
+        val ringtoneManager = RingtoneManager(context)
+        ringtoneManager.setType(RingtoneManager.TYPE_NOTIFICATION);
+        val cursor = ringtoneManager.cursor
+        load(cursor, notifications)
+    }
+
+    private fun load(cursor: Cursor,  list: ArrayList<HashMap<String, Any>>){
+        if (!cursor.isFirst) cursor.moveToFirst()
+        do {
+
+            val itemTitle = cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX)
+            val itemId = cursor.getString(RingtoneManager.ID_COLUMN_INDEX)
+            val itemUri =
+                cursor.getString(RingtoneManager.URI_COLUMN_INDEX) + "/" + itemId
+            val temp = hashMapOf<String, Any>(
+                "id" to itemId,
+                "title" to itemTitle,
+                "uri" to itemUri,
+            )
+            list.add(temp)
+        } while (cursor.moveToNext())
         cursor.close()
+
     }
 
 
-   private fun emptyRingtones() {
-        ringtones.clear()
+   private fun clear() {
+       ringtones.clear()
+       alarms.clear()
+       notifications.clear()
+
     }
+
 }
