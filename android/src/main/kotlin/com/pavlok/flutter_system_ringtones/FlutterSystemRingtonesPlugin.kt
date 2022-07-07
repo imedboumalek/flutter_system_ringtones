@@ -21,7 +21,7 @@ class FlutterSystemRingtonesPlugin : FlutterPlugin, MethodCallHandler {
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
 
-     private var ringtones = arrayListOf<HashMap<String, Any>>()
+    private var ringtones = arrayListOf<HashMap<String, Any>>()
     private var alarms = arrayListOf<HashMap<String, Any>>()
     private var notifications = arrayListOf<HashMap<String, Any>>()
 

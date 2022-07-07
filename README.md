@@ -4,11 +4,31 @@ An Android & iOS plugin to retrieve a list of system ringtones using native API'
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+Import the package
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+import 'package:flutter_system_ringtones/flutter_system_ringtones.dart';
+```
+
+Get a list of available ringtones
+
+```dart
+await FlutterSystemRingtones.getRingtones();
+```
+
+Get a list of available alarm ringtones
+
+```dart
+await FlutterSystemRingtones.getAlarms();
+```
+
+Get a list of available notification ringtones
+
+```dart
+await FlutterSystemRingtones.getNotifications();
+```
+
+#TODO
+[x] Android: Get a list of available ringtones dynamically
+[] iOS: Get a list of available ringtones dynamically (Help Wanted)
+[] Write tests
