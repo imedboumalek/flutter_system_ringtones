@@ -28,7 +28,10 @@ Get a list of available notification ringtones
 await FlutterSystemRingtones.getNotifications();
 ```
 
-#TODO
-[x] Android: Get a list of available ringtones dynamically
-[] iOS: Get a list of available ringtones dynamically (Help Wanted)
-[] Write tests
+### TODO
+
+- [x] Android: Get a list of available ringtones dynamically
+
+- [ ] iOS: Get a list of available ringtones dynamically (Help Wanted)
+
+- [ ] Write tests
