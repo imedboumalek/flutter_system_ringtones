@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' show PlatformException;
 import 'package:flutter_system_ringtones/flutter_system_ringtones.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Ringtone> ringtones = [];
+  List<SystemSound> ringtones = [];
 
   @override
   void initState() {
