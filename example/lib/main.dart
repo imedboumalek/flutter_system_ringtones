@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
         ringtones = temp;
       });
     } on PlatformException {
-      print('Failed to get platform version.');
+      debugPrint('Failed to get platform version.');
     }
 
     if (!mounted) return;
