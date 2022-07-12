@@ -1,3 +1,9 @@
+## 0.0.4
+
+- update `fromMap` to `fromJson`
+- update `toMap` to `toJson`
+- Added encoding/decoding for fromJson/toJson methods.
+
 ## 0.0.3
 
 - Methods now return an empty array if no results are found.
