@@ -1,19 +1,19 @@
 import 'dart:convert';
 
-class SystemSound {
+class Ringtone {
   final String id;
   final String title;
   // final Uint8List data;
   final String uri;
 
-  SystemSound({
+  Ringtone({
     required this.id,
     required this.title,
     // required this.data,
     required this.uri,
   });
 
-  factory SystemSound.fromJson(Map<String, dynamic> map) => SystemSound(
+  factory Ringtone.fromJson(Map<String, dynamic> map) => Ringtone(
         id: map['id'] as String,
         title: map['title'] as String,
         // data: Uint8List.fromList(map['data']),
@@ -27,8 +27,8 @@ class SystemSound {
         'uri': uri,
       };
 
-  factory SystemSound.fromEncodedJson(String encodedJson) =>
-      SystemSound.fromJson(json.decode(encodedJson));
+  factory Ringtone.fromEncodedJson(String encodedJson) =>
+      Ringtone.fromJson(json.decode(encodedJson));
   String toEncodedJson() => json.encode(toJson());
   @override
   String toString() {

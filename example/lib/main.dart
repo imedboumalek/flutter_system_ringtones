@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<SystemSound> ringtones = [];
+  List<Ringtone> ringtones = [];
 
   @override
   void initState() {

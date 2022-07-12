@@ -5,23 +5,23 @@
 // platforms in the `pubspec.yaml` at
 // https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
 
-import 'package:flutter_system_ringtones/src/system_sound.dart';
+import 'package:flutter_system_ringtones/src/ringtone.dart';
 
 import 'flutter_system_ringtones_platform_interface.dart';
-export 'src/system_sound.dart';
+export 'src/ringtone.dart';
 
 class FlutterSystemRingtones {
   FlutterSystemRingtones._();
 
-  static Future<List<SystemSound>> getRingtoneSounds() async {
+  static Future<List<Ringtone>> getRingtoneSounds() async {
     return await FlutterSystemRingtonesPlatform.instance.getRingtones() ?? [];
   }
 
-  static Future<List<SystemSound>> getAlarmSounds() async {
+  static Future<List<Ringtone>> getAlarmSounds() async {
     return await FlutterSystemRingtonesPlatform.instance.getAlarms() ?? [];
   }
 
-  static Future<List<SystemSound>> getNotificationSounds() async {
+  static Future<List<Ringtone>> getNotificationSounds() async {
     return await FlutterSystemRingtonesPlatform.instance.getNotifications() ?? [];
   }
 }

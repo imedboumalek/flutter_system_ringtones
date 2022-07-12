@@ -1,3 +1,7 @@
+## 0.0.5
+
+- reverted "Updated `Ringtone` to `SystemSound`"
+
 ## 0.0.4
 
 - update `fromMap` to `fromJson`

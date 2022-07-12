@@ -1,4 +1,4 @@
-import 'package:flutter_system_ringtones/src/system_sound.dart';
+import 'package:flutter_system_ringtones/src/ringtone.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'flutter_system_ringtones_method_channel.dart';
@@ -24,15 +24,15 @@ abstract class FlutterSystemRingtonesPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<List<SystemSound>?> getRingtones() {
+  Future<List<Ringtone>?> getRingtones() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<List<SystemSound>?> getAlarms() {
+  Future<List<Ringtone>?> getAlarms() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<List<SystemSound>?> getNotifications() {
+  Future<List<Ringtone>?> getNotifications() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }
