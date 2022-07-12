@@ -11,15 +11,17 @@ import 'src/flutter_system_ringtones_platform_interface.dart';
 export 'src/ringtone.dart';
 
 class FlutterSystemRingtones {
-  Future<List<Ringtone>?> getRingtones() {
-    return FlutterSystemRingtonesPlatform.instance.getRingtones();
+  FlutterSystemRingtones._();
+
+  static Future<List<Ringtone>> getRingtoneSounds() async {
+    return await FlutterSystemRingtonesPlatform.instance.getRingtones() ?? [];
   }
 
-  Future<List<Ringtone>?> getAlarms() {
-    return FlutterSystemRingtonesPlatform.instance.getAlarms();
+  static Future<List<Ringtone>> getAlarmSounds() async {
+    return await FlutterSystemRingtonesPlatform.instance.getAlarms() ?? [];
   }
 
-  Future<List<Ringtone>?> getNotifications() {
-    return FlutterSystemRingtonesPlatform.instance.getNotifications();
+  static Future<List<Ringtone>> getNotificationSounds() async {
+    return await FlutterSystemRingtonesPlatform.instance.getNotifications() ?? [];
   }
 }

@@ -16,7 +16,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _flutterSystemRingtonesPlugin = FlutterSystemRingtones();
   List<Ringtone> ringtones = [];
 
   @override
@@ -30,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      final temp = await _flutterSystemRingtonesPlugin.getRingtones() ?? [];
+      final temp = await FlutterSystemRingtones.getRingtoneSounds();
       setState(() {
         ringtones = temp;
       });

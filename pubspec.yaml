@@ -1,6 +1,6 @@
 name: flutter_system_ringtones
 description: An Android & iOS (WIP) plugin to retrieve a list of system ringtones using native API's
-version: 0.0.2
+version: 0.0.3
 homepage: https://pub.dev/packages/flutter_system_ringtones
 repository: https://github.com/imedboumalek/flutter_system_ringtones
 
