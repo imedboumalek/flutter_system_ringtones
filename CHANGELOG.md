@@ -3,6 +3,7 @@
 - update `fromMap` to `fromJson`
 - update `toMap` to `toJson`
 - Added encoding/decoding for fromJson/toJson methods.
+- Updated `Ringtone` to `SystemSound`
 
 ## 0.0.3
 

@@ -10,28 +10,28 @@ Import the package
 import 'package:flutter_system_ringtones/flutter_system_ringtones.dart';
 ```
 
-Get a list of available ringtones
+Get a list of available sounds
 
 ```dart
-await FlutterSystemRingtones.getRingtones();
+await FlutterSystemRingtones.getRingtoneSounds();
 ```
 
-Get a list of available alarm ringtones
+Get a list of available alarm sounds
 
 ```dart
-await FlutterSystemRingtones.getAlarms();
+await FlutterSystemRingtones.getAlarmSounds();
 ```
 
-Get a list of available notification ringtones
+Get a list of available notification sounds
 
 ```dart
-await FlutterSystemRingtones.getNotifications();
+await FlutterSystemRingtones.getNotificationSounds();
 ```
 
 ### TODO
 
 - [x] Android: Get a list of available ringtones dynamically
 
-- [ ] iOS: Get a list of available ringtones dynamically (Help Wanted)
+- [ ] iOS: Get a list of available ringtones dynamically (Help Needed)
 
 - [ ] Write tests
