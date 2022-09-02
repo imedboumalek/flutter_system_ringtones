@@ -1,12 +1,14 @@
 import 'dart:convert';
 
-class Ringtone {
+import 'package:equatable/equatable.dart';
+
+class Ringtone extends Equatable {
   final String id;
   final String title;
   // final Uint8List data;
   final String uri;
 
-  Ringtone({
+  const Ringtone({
     required this.id,
     required this.title,
     // required this.data,
@@ -33,5 +35,22 @@ class Ringtone {
   @override
   String toString() {
     return 'Ringtone{id: $id, title: $title, uri: $uri}';
+  }
+
+  @override
+  List<Object?> get props => [id, title, uri];
+
+  Ringtone copyWith({
+    String? id,
+    String? title,
+    // Uint8List? data,
+    String? uri,
+  }) {
+    return Ringtone(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      // data: data ?? this.data,
+      uri: uri ?? this.uri,
+    );
   }
 }
