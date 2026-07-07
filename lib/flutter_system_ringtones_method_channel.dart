@@ -37,4 +37,15 @@ class MethodChannelFlutterSystemRingtones extends FlutterSystemRingtonesPlatform
         notifications?.map((notification) => Map<String, dynamic>.from(notification)).toList();
     return notifications?.map((map) => Ringtone.fromJson(map)).toList();
   }
+
+  /// invokes the play method on the native platform, which plays the sound at
+  /// [uri]. Any currently playing sound is stopped first.
+  @override
+  Future<void> play(String uri) =>
+      methodChannel.invokeMethod<void>('play', {'uri': uri});
+
+  /// invokes the stop method on the native platform, stopping the currently
+  /// playing sound, if any.
+  @override
+  Future<void> stop() => methodChannel.invokeMethod<void>('stop');
 }

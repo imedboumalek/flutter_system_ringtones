@@ -1,3 +1,14 @@
+## 1.0.0
+
+- **Added**: `play(Ringtone)` and `stop()` for previewing sounds natively (Android `RingtoneManager`, iOS `AVAudioPlayer`). `play` auto-stops the previously playing sound.
+- **Added**: iOS support is no longer work-in-progress — sounds are enumerated from `/System/Library/Audio/UISounds/` (including `.wav` files) and the plugin supports both Swift Package Manager and CocoaPods.
+- **Fixed**: Android no longer crashes when a sound list is empty; ringtone URIs are now built with the documented `RingtoneManager.getRingtoneUri` API.
+- **Changed**: Android sound lists load lazily on first request, off the main thread (previously loaded eagerly at engine startup).
+- **Fixed**: iOS podspec metadata and platform version; removed the dead Objective-C shim and debug logging.
+- **Fixed**: sound listing on the iOS simulator (system sounds are resolved via `SIMULATOR_ROOT`; previously all lists were empty on simulators).
+- **Changed**: minimum Flutter version is now 3.24.0 (Dart SDK ^3.4.0).
+- **Docs**: new README sections on previewing sounds and on what the `uri` field means per platform.
+
 ## 0.0.6
 
 - Added Equatable and copyWith
