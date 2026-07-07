@@ -1,3 +1,4 @@
+import AVFoundation
 import Flutter
 import UIKit
 
@@ -12,6 +13,8 @@ public class FlutterSystemRingtonesPlugin: NSObject, FlutterPlugin {
         #endif
         return root + "/System/Library/Audio/UISounds"
     }()
+
+    private var player: AVAudioPlayer?
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(
@@ -30,8 +33,47 @@ public class FlutterSystemRingtonesPlugin: NSObject, FlutterPlugin {
             result(alarmSounds())
         case "getNotifications":
             result(notificationSounds())
+        case "play":
+            play(call, result: result)
+        case "stop":
+            player?.stop()
+            player = nil
+            result(nil)
         default:
             result(FlutterMethodNotImplemented)
+        }
+    }
+
+    // MARK: - Playback
+
+    private func play(_ call: FlutterMethodCall, result: FlutterResult) {
+        guard let arguments = call.arguments as? [String: Any],
+              let uri = arguments["uri"] as? String,
+              !uri.isEmpty,
+              let url = URL(string: uri)
+        else {
+            result(FlutterError(
+                code: "INVALID_ARGUMENT",
+                message: "Missing or invalid 'uri' argument",
+                details: nil
+            ))
+            return
+        }
+
+        player?.stop()
+        // .playback keeps previews audible even when the silent switch is on.
+        try? AVAudioSession.sharedInstance().setCategory(.playback)
+        try? AVAudioSession.sharedInstance().setActive(true)
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+            result(nil)
+        } catch {
+            result(FlutterError(
+                code: "PLAY_ERROR",
+                message: error.localizedDescription,
+                details: nil
+            ))
         }
     }
 

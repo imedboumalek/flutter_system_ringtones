@@ -1,10 +1,3 @@
-// You have generated a new plugin project without specifying the `--platforms`
-// flag. A plugin project with no platform support was generated. To add a
-// platform, run `flutter create -t plugin --platforms <platforms> .` under the
-// same directory. You can also find a detailed instruction on how to add
-// platforms in the `pubspec.yaml` at
-// https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
-
 import 'package:flutter_system_ringtones/src/ringtone.dart';
 
 import 'flutter_system_ringtones_platform_interface.dart';
@@ -22,6 +15,20 @@ class FlutterSystemRingtones {
   }
 
   static Future<List<Ringtone>> getNotificationSounds() async {
-    return await FlutterSystemRingtonesPlatform.instance.getNotifications() ?? [];
+    return await FlutterSystemRingtonesPlatform.instance.getNotifications() ??
+        [];
+  }
+
+  /// Plays [ringtone] using the platform's native audio facilities.
+  ///
+  /// Any currently playing sound is stopped first. Throws a
+  /// `PlatformException` if the sound cannot be resolved or played.
+  static Future<void> play(Ringtone ringtone) {
+    return FlutterSystemRingtonesPlatform.instance.play(ringtone.uri);
+  }
+
+  /// Stops the currently playing sound, if any. Safe to call when idle.
+  static Future<void> stop() {
+    return FlutterSystemRingtonesPlatform.instance.stop();
   }
 }
