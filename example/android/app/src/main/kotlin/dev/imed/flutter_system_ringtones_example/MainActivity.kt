@@ -1,0 +1,5 @@
+package dev.imed.flutter_system_ringtones_example
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()
