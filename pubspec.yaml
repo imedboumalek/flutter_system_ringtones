@@ -23,7 +23,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.pavlok.flutter_system_ringtones
+        package: dev.imed.flutter_system_ringtones
         pluginClass: FlutterSystemRingtonesPlugin
       ios:
         pluginClass: FlutterSystemRingtonesPlugin
