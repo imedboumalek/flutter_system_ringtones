@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Example app (debug)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "example",
+      "program": "lib/main.dart"
+    },
+    {
+      "name": "Example app (profile)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "example",
+      "program": "lib/main.dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "Example app (release)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "example",
+      "program": "lib/main.dart",
+      "flutterMode": "release"
+    },
+    {
+      "name": "Plugin unit tests",
+      "request": "launch",
+      "type": "dart",
+      "program": "test"
+    },
+    {
+      "name": "Integration tests (device)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "example",
+      "program": "integration_test/plugin_test.dart"
+    }
+  ]
+}
