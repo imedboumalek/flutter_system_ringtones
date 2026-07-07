@@ -6,7 +6,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -87,12 +87,11 @@ class _HomePageState extends State<HomePage> {
 
 class _SoundList extends StatefulWidget {
   const _SoundList({
-    Key? key,
     required this.future,
     required this.playingUri,
     required this.onPlay,
     required this.onStop,
-  }) : super(key: key);
+  });
 
   final Future<List<Ringtone>> future;
   final String? playingUri;
