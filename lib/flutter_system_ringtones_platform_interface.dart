@@ -5,19 +5,12 @@ import 'flutter_system_ringtones_method_channel.dart';
 /// The interface that platform-specific implementations of
 /// flutter_system_ringtones must implement.
 abstract class FlutterSystemRingtonesPlatform {
-  static FlutterSystemRingtonesPlatform _instance =
-      MethodChannelFlutterSystemRingtones();
-
-  /// The default instance of [FlutterSystemRingtonesPlatform] to use.
+  /// The instance of [FlutterSystemRingtonesPlatform] to use.
   ///
-  /// Defaults to [MethodChannelFlutterSystemRingtones].
-  static FlutterSystemRingtonesPlatform get instance => _instance;
-
-  /// Platform-specific implementations (or tests) can replace the default
-  /// method-channel implementation by setting this.
-  static set instance(FlutterSystemRingtonesPlatform instance) {
-    _instance = instance;
-  }
+  /// Defaults to [MethodChannelFlutterSystemRingtones]. Platform-specific
+  /// implementations (or tests) can replace it by setting this.
+  static FlutterSystemRingtonesPlatform instance =
+      MethodChannelFlutterSystemRingtones();
 
   Future<List<Ringtone>?> getRingtones() {
     throw UnimplementedError('getRingtones() has not been implemented.');
