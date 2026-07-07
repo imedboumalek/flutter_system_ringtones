@@ -1,28 +1,16 @@
 import 'package:flutter_system_ringtones/src/ringtone.dart';
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'flutter_system_ringtones_method_channel.dart';
 
-abstract class FlutterSystemRingtonesPlatform extends PlatformInterface {
-  /// Constructs a FlutterSystemRingtonesPlatform.
-  FlutterSystemRingtonesPlatform() : super(token: _token);
-
-  static final Object _token = Object();
-
-  static FlutterSystemRingtonesPlatform _instance = MethodChannelFlutterSystemRingtones();
-
-  /// The default instance of [FlutterSystemRingtonesPlatform] to use.
+/// The interface that platform-specific implementations of
+/// flutter_system_ringtones must implement.
+abstract class FlutterSystemRingtonesPlatform {
+  /// The instance of [FlutterSystemRingtonesPlatform] to use.
   ///
-  /// Defaults to [MethodChannelFlutterSystemRingtones].
-  static FlutterSystemRingtonesPlatform get instance => _instance;
-
-  /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [FlutterSystemRingtonesPlatform] when
-  /// they register themselves.
-  static set instance(FlutterSystemRingtonesPlatform instance) {
-    PlatformInterface.verifyToken(instance, _token);
-    _instance = instance;
-  }
+  /// Defaults to [MethodChannelFlutterSystemRingtones]. Platform-specific
+  /// implementations (or tests) can replace it by setting this.
+  static FlutterSystemRingtonesPlatform instance =
+      MethodChannelFlutterSystemRingtones();
 
   Future<List<Ringtone>?> getRingtones() {
     throw UnimplementedError('getRingtones() has not been implemented.');

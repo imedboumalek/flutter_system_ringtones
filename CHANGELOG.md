@@ -1,3 +1,9 @@
+## 1.1.0
+
+- **Changed**: the plugin now has **zero runtime dependencies** — `equatable` and `plugin_platform_interface` were removed.
+- `Ringtone` implements `==`/`hashCode` directly; equality semantics are unchanged (all three fields).
+- `FlutterSystemRingtonesPlatform` is now a plain abstract class with a settable `instance`. If you implemented it in tests, drop the `MockPlatformInterfaceMixin` mixin — just `implements` the class.
+
 ## 1.0.0
 
 - **Added**: `play(Ringtone)` and `stop()` for previewing sounds natively (Android `RingtoneManager`, iOS `AVAudioPlayer`). `play` auto-stops the previously playing sound.

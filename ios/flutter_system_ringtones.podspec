@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_system_ringtones'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'Flutter plugin to list and preview system ringtones, alarms and notification sounds.'
   s.description      = <<-DESC
 A Flutter plugin that lists the device's system ringtones, alarms and

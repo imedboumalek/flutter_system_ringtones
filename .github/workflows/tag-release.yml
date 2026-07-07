@@ -1,0 +1,32 @@
+name: Tag release on main
+
+on:
+  push:
+    branches: [main]
+    paths: [pubspec.yaml]
+
+jobs:
+  tag:
+    permissions:
+      contents: write # push the version tag
+      actions: write # dispatch the publish workflow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create tag for new version and trigger publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | sed 's/version:[[:space:]]*//')
+          TAG="v$VERSION"
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG already exists; nothing to do."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "$TAG" -m "Release $VERSION"
+          git push origin "$TAG"
+          # Tags pushed with GITHUB_TOKEN don't fire push-triggered workflows
+          # (anti-recursion), so dispatch the publish workflow explicitly.
+          gh workflow run publish.yml --ref "$TAG"
