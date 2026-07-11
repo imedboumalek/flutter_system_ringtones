@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Package metadata: added pub.dev topics; homepage and issue tracker now point at the GitHub repository.
+
 ## 1.1.0
 
 - **Changed**: the plugin now has **zero runtime dependencies** — `equatable` and `plugin_platform_interface` were removed.
