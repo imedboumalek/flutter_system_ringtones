@@ -16,7 +16,7 @@ notification sounds and can preview them using native audio playback.
   s.source           = { :path => '.' }
   s.source_files = 'flutter_system_ringtones/Sources/flutter_system_ringtones/**/*'
   s.dependency 'Flutter'
-  s.platform = :ios, '12.0'
+  s.platform = :ios, '13.0'
 
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'

@@ -1,3 +1,7 @@
+## 1.1.2
+
+- Update iOS target platform to fix latest xcode builds
+
 ## 1.1.1
 
 - Package metadata: added pub.dev topics; homepage and issue tracker now point at the GitHub repository.

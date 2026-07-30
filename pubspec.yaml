@@ -1,6 +1,6 @@
 name: flutter_system_ringtones
 description: A Flutter plugin to list and preview system ringtones, alarms and notification sounds on Android and iOS.
-version: 1.1.1
+version: 1.1.2
 homepage: https://github.com/imedboumalek/flutter_system_ringtones
 repository: https://github.com/imedboumalek/flutter_system_ringtones
 issue_tracker: https://github.com/imedboumalek/flutter_system_ringtones/issues
